@@ -1,12 +1,14 @@
 let lastRainId;
 
 function Rain() {
-  let socket = new WebSocket("wss://api.runestake.com/socket.io/?EIO=4&transport=websocket");
-  socket.onopen = function(e) {
+  let socket = new WebSocket(
+    "wss://api.rbxgold.com/socket.io/?EIO=4&transport=websocket"
+  );
+  socket.onopen = function (e) {
     console.log("testestse");
   };
   //
-  socket.onmessage = function(event) {
+  socket.onmessage = function (event) {
     if (event.data.startsWith("0")) {
       socket.send("40");
     }
@@ -40,40 +42,35 @@ function Rain() {
         var tipEndIndex;
         if (data.includes("joinedRain")) {
           tipEndIndex = data.indexOf(",", tipStartIndex);
-        }
-        else {
+        } else {
           tipEndIndex = data.indexOf("}", tipStartIndex);
         }
         var tipAmountString = data.substring(tipStartIndex, tipEndIndex);
 
-z
         // Date
         var dateStartIndex = data.indexOf("endDate") + 9;
         var dateEndIndex = data.indexOf("Z", dateStartIndex);
         var endDate = data.substring(dateStartIndex, dateEndIndex);
         // Total
         var rainAmount = parseInt(evAmountString) + parseInt(tipAmountString);
-        if (rainAmount >= 100) {
+        if (rainAmount >= 1) {
           ping(rainAmount, endDate);
         }
-
-
       }
-
     }
   };
 
-  socket.onclose = function(event) {
+  socket.onclose = function (event) {
     socket.close();
     Rain();
   };
 
-  socket.onerror = function(error) {
+  socket.onerror = function (error) {
     console.log(`[error]`);
     Rain();
   };
 
-  setInterval(function() {
+  setInterval(function () {
     socket.send('42["rain-ping"]');
   }, 5000);
 }
@@ -81,28 +78,28 @@ Rain();
 
 async function ping(rainAmount, endDate) {
   rainAmount = new Intl.NumberFormat().format(rainAmount.toString());
-  const url = "https://discord.com/api/webhooks/1188423625397780510/dnCV3hBdWMFJ0BtesNLngByxwKt18KeBwL1xnMKMD5boq-gv7k3A_lp5CeAfpbtmB_BY";
+  const url =
+    "https://discord.com/api/webhooks/1242954539288756227/yiVZ2e4K0ZrnlYokSmMMIz0DgoKd-OGU-jEpBPw4NBGferP_b2eQ_JfdhrFfZFRiMQlY";
   endDate = Date.parse(endDate) / 1000;
   const headers = {
-    "Accept": "application/json",
+    Accept: "application/json",
     "Accept-Language": "en",
-    "Content-Type": "application/json"
-  }
-  const body = JSON.stringify({
-    "content": "<@&1166800262938243193> https://runestake.com",
-    "embeds": [
+    "Content-Type": "application/json",
+  };
+  let body = {
+    content: "<@&1165009696776790096> https://rbxgold.com",
+    embeds: [
       {
-        "title": "Rain on  <:runestake:1167096407958753402> **RUNESTAKE **<:runestake:1167096407958753402>",
-        "description": "☂️ **Current rain:** \n```" + rainAmount + "```",
-        "color": 16762625
-      }
+        title:
+          "Rain on  <:rbxgold:1165009643970502657> **RBXGOLD **<:rbxgold:1165009643970502657>",
+        description: "☂️ **Current rain:** \n```" + rainAmount + "```",
+        color: 16762625,
+      },
     ],
-    "attachments": []
-  })
+    attachments: [],
+  };
 
-  const response = await fetch(url, { method: 'POST', headers, body });
+  const response = await fetch(url, { method: "POST", headers, body });
   const data = await response.json();
   console.log(data);
-
-
 }
