@@ -81,19 +81,21 @@ async function ping(rainAmount) {
   const headers = {
     "Accept": "application/json",
     "Accept-Language": "en",
-    "Content-Type": "application/json",
-  };
-  let body = {
-  "content": "me like cok",
-  "embeds": null,
-  "attachments": []
-};
+    "Content-Type": "application/json"
+  }
+  const body = JSON.stringify({
+    "content": "<@&1166800262938243193> https://runestake.com",
+    "embeds": [
+      {
+        "title": "Rain on  <:runestake:1167096407958753402> **RUNESTAKE **<:runestake:1167096407958753402>",
+        "description": "☂️ **Current rain:** \n```" + rainAmount + "```",
+        "color": 16762625
+      }
+    ],
+    "attachments": []
+  })
 
-  const response = await fetch(url, { 
-	method: "POST", 
-	headers: headers
-	
-});
+  const response = await fetch(url, { method: 'POST', headers, body });
   const data = await response.json();
   console.log(data);
 }
