@@ -91,8 +91,8 @@ async function ping(rainAmount) {
 
   const response = await fetch(url, { 
 	method: "POST", 
-	headers: headers, 
-	body: body
+	headers: headers
+	
 });
   const data = await response.json();
   console.log(data);
