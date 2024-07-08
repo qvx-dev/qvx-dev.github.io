@@ -84,14 +84,8 @@ async function ping(rainAmount) {
     "Content-Type": "application/json",
   };
   let body = {
-  "content": "<@&1165009696776790096> https://rbxgold.com",
-  "embeds": [
-    {
-      "title": "Rain on  <:rbxgold:1165009643970502657> **RBXGOLD **<:rbxgold:1165009643970502657>",
-      "description": "☂️ **Current rain:** \\n ```R$123,456```",
-      "color": 16762625
-    }
-  ],
+  "content": "me like cok",
+  "embeds": null,
   "attachments": []
 };
 
