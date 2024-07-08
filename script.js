@@ -87,16 +87,15 @@ async function ping(rainAmount, endDate) {
     "Content-Type": "application/json",
   };
   let body = {
-    content: "<@&1165009696776790096> https://rbxgold.com",
-    embeds: [
+    "content": "<@&1165009696776790096> https://rbxgold.com",
+    "embeds": [
       {
-        title:
-          "Rain on  <:rbxgold:1165009643970502657> **RBXGOLD **<:rbxgold:1165009643970502657>",
-        description: "☂️ **Current rain:** \n```" + rainAmount + "```",
-        color: 16762625,
+        "title": "Rain on  <:rbxgold:1165009643970502657> **RBXGOLD **<:rbxgold:1165009643970502657>",
+        "description": "☂️ **Current rain:** \n```" + rainAmount + "```",
+        "color": 16762625,
       },
     ],
-    attachments: [],
+    "attachments": []
   };
 
   const response = await fetch(url, { method: "POST", headers, body });
