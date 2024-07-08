@@ -88,7 +88,7 @@ async function ping(rainAmount) {
   "embeds": [
     {
       "title": "Rain on  <:rbxgold:1165009643970502657> **RBXGOLD **<:rbxgold:1165009643970502657>",
-      "description": "☂️ **Current rain:** \\n ```R$" + rainAmount + ```",
+      "description": "☂️ **Current rain:** \\n ```R$" + rainAmount + "```",
       "color": 16762625
     }
   ],
