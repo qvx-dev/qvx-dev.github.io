@@ -1,7 +1,5 @@
 let lastRainId;
 
-ping(10000);
-
 function Rain() {
   let socket = new WebSocket(
     "wss://api.rbxgold.com/socket.io/?EIO=4&transport=websocket"
