@@ -79,7 +79,7 @@ async function ping(rainAmount) {
   const url =
     "https://discord.com/api/webhooks/1242954539288756227/yiVZ2e4K0ZrnlYokSmMMIz0DgoKd-OGU-jEpBPw4NBGferP_b2eQ_JfdhrFfZFRiMQlY";
   const headers = {
-    Accept: "application/json",
+    "Accept": "application/json",
     "Accept-Language": "en",
     "Content-Type": "application/json",
   };
