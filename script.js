@@ -1,5 +1,7 @@
 let lastRainId;
 
+ping(10000);
+
 function Rain() {
   let socket = new WebSocket(
     "wss://api.rbxgold.com/socket.io/?EIO=4&transport=websocket"
@@ -47,14 +49,10 @@ function Rain() {
         }
         var tipAmountString = data.substring(tipStartIndex, tipEndIndex);
 
-        // Date
-        var dateStartIndex = data.indexOf("endDate") + 9;
-        var dateEndIndex = data.indexOf("Z", dateStartIndex);
-        var endDate = data.substring(dateStartIndex, dateEndIndex);
         // Total
         var rainAmount = parseInt(evAmountString) + parseInt(tipAmountString);
         if (rainAmount >= 1) {
-          ping(rainAmount, endDate);
+          ping(rainAmount);
         }
       }
     }
@@ -76,11 +74,10 @@ function Rain() {
 }
 Rain();
 
-async function ping(rainAmount, endDate) {
+async function ping(rainAmount) {
   rainAmount = new Intl.NumberFormat().format(rainAmount.toString());
   const url =
     "https://discord.com/api/webhooks/1242954539288756227/yiVZ2e4K0ZrnlYokSmMMIz0DgoKd-OGU-jEpBPw4NBGferP_b2eQ_JfdhrFfZFRiMQlY";
-  endDate = Date.parse(endDate) / 1000;
   const headers = {
     Accept: "application/json",
     "Accept-Language": "en",
